@@ -1,0 +1,12 @@
+
+<div #map id="{{target}}" class="map"></div>
+<div class="ol-map-options">
+  <div class="layers-options">
+    <div class="form-check" *ngFor="let layer of layers">
+        <input class="form-check-input" type="checkbox" value="" id="{{layer.layerName}}" [(ngModel)]="layer.checked" (change)="handleCheckboxChange(layer)">
+        <label class="form-check-label" for="{{layer.layerName}}">
+          {{layer.layerName}}
+        </label>
+    </div>
+  </div>
+</div>

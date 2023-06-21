@@ -1,0 +1,11 @@
+.principal-layout-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 10% 90%;
+
+    .principal-layout-toolbar {
+        background-color: rgb(92, 92, 208);
+    }
+    .principal-layout-content {
+    }
+}

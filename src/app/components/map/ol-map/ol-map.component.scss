@@ -1,0 +1,16 @@
+.map {
+  
+}
+.ol-map-options {
+    position: absolute;
+    height: 50%;
+    width: 15%;
+    background-color: rgb(72, 72, 169);
+    transform: translateY(-150%);
+    .layers-options{
+        margin-left: 10px;
+        .form-check-label {
+            color: white;
+        }
+    }
+}
