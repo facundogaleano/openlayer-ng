@@ -17,6 +17,7 @@ import VectorLayer from 'ol/layer/Vector';
 import Feature from 'ol/Feature';
 import { Point } from 'ol/geom';
 import { fromLonLat } from 'ol/proj';
+import { style } from '@angular/animations';
 
 export const DEFAULT_HEIGHT = '100%';
 export const DEFAULT_WIDTH = '100%';
@@ -43,7 +44,6 @@ const highlightStyle = new Style({
     }),
   }),
 });
-
 
 @Component({
   selector: 'app-ol-map',
@@ -140,8 +140,65 @@ export class OlMapComponent implements OnInit, AfterViewInit, OnChanges {
               geometry: new Point(fromLonLat([-60.3158, -32.0253 ])),
             })],
           }),
-            style: highlightStyle,
+          style: highlightStyle,
           }),
+        checked: false
+      },
+      {
+        layerId: 7,
+        layerName: "Manzanas",
+        layer: new TileLayer({
+          source: new TileWMS({
+            url: 'https://idecor-ws.mapascordoba.gob.ar/geoserver/idecor/manzana/wms',
+            params: {'LAYERS': 'manzana', 'TILED': true},
+            serverType: 'geoserver',
+            // Countries have transparency, so do not fade tiles:
+            transition: 0,
+          }),
+        }),
+        checked: false
+      },
+      {
+        layerId: 8,
+        layerName: "countries",
+        layer: new TileLayer({
+          source: new TileWMS({
+            url: 'http://localhost:8080/geoserver/postgisTest/wms',
+            params: {'layers': 'postgisTest:cities'},
+            serverType: 'geoserver',
+            // Countries have transparency, so do not fade tiles:
+            transition: 0,
+          }),
+        }),
+        checked: false
+      },
+      {
+        layerId: 9,
+        layerName: "provincias",
+        layer: new TileLayer({
+          source: new TileWMS({
+            url: 'http://localhost:8080/geoserver/postgisTest/wms',
+            params: {'layers': 'postgisTest:provinceboundaries', 'TILED': true},
+            serverType: 'geoserver',
+            // Countries have transparency, so do not fade tiles:
+            transition: 0,
+          }),
+        }),
+        checked: false
+      },
+      {
+        layerId: 10,
+        layerName: "Departamentos Cordoba",
+        layer: new TileLayer({
+          source: new TileWMS({
+            url: 'http://localhost:8080/geoserver/postgisTest/wms',
+            params: {'layers': 'postgisTest:cordobadepartments', 'TILED': true},
+            serverType: 'geoserver',
+            // Countries have transparency, so do not fade tiles:
+            transition: 0,
+          }),
+        }),
+        
         checked: false
       }
     ]
